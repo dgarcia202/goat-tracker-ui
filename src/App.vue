@@ -14,7 +14,7 @@
           value="true"
           v-for="(item, i) in items"
           :key="i"
-          @click="navigateToRoute(item.routeName)"
+          @click="navigateToRoute(item.route)"
         >
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
@@ -95,8 +95,8 @@ export default {
     }
   },
   methods: {
-    navigateToRoute: function (routeName) {
-      this.$router.push(routeName)
+    navigateToRoute: function (route) {
+      this.$router.push(route)
     }
   }
 }

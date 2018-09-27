@@ -2,16 +2,16 @@ export default function mainMenuItems() {
     return [{
         icon: 'all_inbox',
         title: 'Release Backlog',
-        routeName: 'backlog'
+        route: 'backlog'
       },
       {
         icon: 'class',
         title: 'Iteration Status',
-        routeName: 'home'
+        route: '/'
       },
       {
         icon: 'settings',
         title: 'Settings',
-        routeName: 'settings'
+        route: 'settings'
       }];
 }
