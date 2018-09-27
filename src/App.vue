@@ -41,6 +41,17 @@
       </v-btn> -->
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
+
+      <v-flex xs3>
+        <v-select
+          v-model="selectedProject"
+          :items="projects"
+          item-text="name"
+          item-value="name"     
+          class="mr-5"   
+        ></v-select>
+      </v-flex>
+
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
@@ -71,18 +82,20 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import BacklogManagement from './components/BacklogManagement'
+import axios from '../node_modules/axios/dist/axios.min'
+import config from './config/Configuration'
 import mainMenuItems from './config/MainMenu'
+import BacklogManagement from './components/BacklogManagement'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     BacklogManagement
   },
   data () {
     return {
+      selectedProject: null,
+      projects: [],
       clipped: false,
       drawer: true,
       fixed: false,
@@ -98,6 +111,14 @@ export default {
     navigateToRoute: function (route) {
       this.$router.push(route)
     }
-  }
+  },
+  mounted () {
+      axios
+          .get(config.apiBaseUrl + 'projects/')
+          .then(response => {
+            this.projects = response.data._embedded.projects;
+            this.selectedProject = this.projects[0].name;
+          })
+  }   
 }
 </script>
