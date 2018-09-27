@@ -14,7 +14,7 @@
           value="true"
           v-for="(item, i) in items"
           :key="i"
-          @click=""
+          @click="navigateToRoute(item.routeName)"
         >
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
@@ -46,8 +46,7 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <!-- <HelloWorld/> -->
-      <backlog-management />
+      <router-view/>
     </v-content>
     <v-navigation-drawer
       temporary
@@ -93,6 +92,11 @@ export default {
       rightDrawer: false,
       title: 'Goat Tracker',
       copyRightHolder: 'GoatSoft S.P.'
+    }
+  },
+  methods: {
+    navigateToRoute: function (routeName) {
+      this.$router.push(routeName)
     }
   }
 }
