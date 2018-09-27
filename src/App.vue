@@ -35,9 +35,9 @@
       <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>web</v-icon>
       </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
+<!--       <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>web</v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
@@ -45,7 +45,8 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <HelloWorld/>
+      <!-- <HelloWorld/> -->
+      <backlog-management />
     </v-content>
     <v-navigation-drawer
       temporary
@@ -71,12 +72,14 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import BacklogManagement from './components/BacklogManagement'
 import mainMenuItems from './config/MainMenu'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    BacklogManagement
   },
   data () {
     return {
