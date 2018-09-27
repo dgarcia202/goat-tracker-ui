@@ -71,6 +71,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import mainMenuItems from './config/MainMenu'
 
 export default {
   name: 'App',
@@ -82,18 +83,7 @@ export default {
       clipped: false,
       drawer: true,
       fixed: false,
-      items: [{
-        icon: 'all_inbox',
-        title: 'Release Backlog'
-      },
-      {
-        icon: 'class',
-        title: 'Iteration Status'
-      },
-      {
-        icon: 'settings',
-        title: 'Settings'
-      }],
+      items: mainMenuItems(),
       miniVariant: false,
       right: true,
       rightDrawer: false,
