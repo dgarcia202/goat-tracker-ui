@@ -36,13 +36,10 @@
       <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>web</v-icon>
       </v-btn>
-<!--       <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>web</v-icon>
-      </v-btn> -->
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-flex xs3>
+<!--       <v-flex xs3>
         <v-select
           v-model="selectedProject"
           :items="projects"
@@ -50,8 +47,8 @@
           item-value="name"     
           class="mr-5"   
         ></v-select>
-      </v-flex>
-
+      </v-flex> -->
+      <ProjectSelector />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
@@ -82,20 +79,19 @@
 </template>
 
 <script>
-import axios from '../node_modules/axios/dist/axios.min'
 import config from './config/Configuration'
 import mainMenuItems from './config/MainMenu'
+import ProjectSelector from './components/ProjectSelector'
 import BacklogManagement from './components/BacklogManagement'
 
 export default {
   name: 'App',
   components: {
-    BacklogManagement
+    BacklogManagement,
+    ProjectSelector
   },
-  data () {
+  data() {
     return {
-      selectedProject: null,
-      projects: [],
       clipped: false,
       drawer: true,
       fixed: false,
@@ -111,14 +107,6 @@ export default {
     navigateToRoute: function (route) {
       this.$router.push(route)
     }
-  },
-  mounted () {
-      axios
-          .get(config.apiBaseUrl + 'projects/')
-          .then(response => {
-            this.projects = response.data._embedded.projects;
-            this.selectedProject = this.projects[0].name;
-          })
-  }   
+  } 
 }
 </script>
