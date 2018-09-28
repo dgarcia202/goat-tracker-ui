@@ -38,17 +38,7 @@
       </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-
-<!--       <v-flex xs3>
-        <v-select
-          v-model="selectedProject"
-          :items="projects"
-          item-text="name"
-          item-value="name"     
-          class="mr-5"   
-        ></v-select>
-      </v-flex> -->
-      <ProjectSelector />
+      <ProjectSelector v-model="selectedProject" />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
@@ -92,6 +82,7 @@ export default {
   },
   data() {
     return {
+      selectedProject: null,
       clipped: false,
       drawer: true,
       fixed: false,
